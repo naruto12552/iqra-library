@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iqra-library-eta.vercel.app/sitemap.xml

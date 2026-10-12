@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0a0a0a"/>
+  <title>Iqra Library Narkatiaganj | Premium Self-Study Space</title>
+  <meta name="description" content="Iqra Library — Narkatiaganj's most focused study space. AC environment, 24/7 open, high-speed Wi-Fi, CCTV, lockers & power backup. Built for serious exam aspirants."/>
+  <meta name="keywords" content="Iqra Library Narkatiaganj, self study library Narkatiaganj, study space West Champaran, reading room Narkatiaganj, competitive exam study centre Bihar"/>
+
+  <!-- Open Graph (full absolute URL for og:image) -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://iqra-library-eta.vercel.app/"/>
+  <meta property="og:title"       content="Iqra Library Narkatiaganj | Premium Self-Study Space"/>
+  <meta property="og:description" content="Narkatiaganj's most focused study space — AC, 24/7, Wi-Fi, CCTV. Join serious students preparing for UPSC, JEE, NEET & more."/>
+  <meta property="og:image"       content="https://iqra-library-eta.vercel.app/images/desks.jpg"/>
+  <meta name="twitter:card"       content="summary_large_image"/>
+  <meta name="twitter:title"      content="Iqra Library Narkatiaganj | Premium Self-Study Space"/>
+  <meta name="twitter:description" content="Narkatiaganj's most focused study space — AC, 24/7, Wi-Fi, CCTV."/>
+  <meta name="twitter:image"      content="https://iqra-library-eta.vercel.app/images/desks.jpg"/>
+
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml"/>
+  <link rel="apple-touch-icon" href="images/logo-180.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <!-- LocalBusiness JSON-LD schema for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Iqra Library",
+    "description": "A premium self-study space in Narkatiaganj, West Champaran, Bihar. Open 24/7 with AC environment, high-speed Wi-Fi, CCTV, lockers and power backup.",
+    "url": "https://iqra-library-eta.vercel.app/",
+    "image": "https://iqra-library-eta.vercel.app/images/desks.jpg",
+    "telephone": ["+919334239792", "+919631095377", "+919798712852"],
+    "openingHours": "Mo-Su 00:00-24:00",
+    "priceRange": "₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Krishi Road, Nandpur Dala",
+      "addressLocality": "Narkatiaganj",
+      "addressRegion": "Bihar",
+      "postalCode": "845455",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "27.1089425",
+      "longitude": "84.4732441"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --dark:   #0a0a0a;
+      --dark2:  #111111;
+      --dark3:  #1a1a1a;
+      --green:  #0d3d26;
+      --green2: #145c38;
+      --green3: #1a7a4a;
+      --gold:   #c9a84c;
+      --gold2:  #e8c96a;
+      --gold3:  #f5dfa0;
+      --white:  #ffffff;
+      --off:    #f5f5f0;
+      --off2:   #ececec;
+      --muted:  #888888;
+      --radius: 20px;
+    }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body {
+      font-family:'Inter', system-ui, sans-serif;
+      background:var(--white);
+      color:#111;
+      -webkit-tap-highlight-color:transparent;
+      overflow-x:hidden;
+    }
+    .container { max-width:1120px; margin:0 auto; padding:0 24px; }
+    img { display:block; max-width:100%; }
+    svg { display:block; flex-shrink:0; }
+
+    /* ── JS REVEAL: only hide if JS loaded ── */
+    .js .reveal {
+      opacity:0;
+      transform:translateY(32px);
+      transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .js .reveal.in { opacity:1; transform:translateY(0); }
+    .js .reveal.d1 { transition-delay:0.08s; }
+    .js .reveal.d2 { transition-delay:0.16s; }
+    .js .reveal.d3 { transition-delay:0.24s; }
+    .js .reveal.d4 { transition-delay:0.32s; }
+    .js .reveal.d5 { transition-delay:0.40s; }
+    .js .reveal.d6 { transition-delay:0.48s; }
+
+    /* ── SHARED TAGS ── */
+    .tag {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:11px; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+    }
+    .tag::before {
+      content:''; display:block;
+      width:24px; height:2px; background:var(--gold); border-radius:2px;
+    }
+
+    /* ─────────────── NAVBAR ─────────────── */
+    #nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      height:68px;
+      background:rgba(10,10,10,0.97);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      display:flex; align-items:center; justify-content:space-between;
+      height:100%; padding:0 24px;
+      max-width:1200px; margin:0 auto;
+    }
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-logo img { width:38px; height:38px; border-radius:50%; }
+    .nav-logo-text { font-size:17px; font-weight:800; color:#fff; }
+    .nav-logo-text em { color:var(--gold2); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a {
+      color:rgba(255,255,255,0.55); text-decoration:none;
+      font-size:13px; font-weight:500; transition:color 0.2s;
+    }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta {
+      background:var(--gold); color:var(--dark);
+      padding:10px 22px; border-radius:100px;
+      font-size:13px; font-weight:700; text-decoration:none;
+      transition:background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background:var(--gold2); transform:translateY(-1px); }
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:6px;
+    }
+    .hamburger span {
+      display:block; width:22px; height:2px;
+      background:#fff; border-radius:2px; transition:all 0.3s;
+    }
+    .mob-menu {
+      display:none; position:fixed;
+      top:68px; left:0; right:0;
+      background:#0d0d0d; border-top:1px solid rgba(255,255,255,0.06);
+      padding:16px 24px 24px; z-index:999;
+    }
+    .mob-menu.open { display:block; }
+    .mob-menu a {
+      display:block; color:rgba(255,255,255,0.7);
+      text-decoration:none; font-size:16px; font-weight:500;
+      padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .mob-cta-btn {
+      display:block; background:var(--gold); color:var(--dark);
+      text-align:center; padding:15px; border-radius:14px;
+      font-weight:700; font-size:15px; margin-top:16px; text-decoration:none;
+    }
+
+    /* ─────────────── HERO ─────────────── */
+    #hero {
+      position:relative; overflow:hidden;
+      min-height:100svh; min-height:100vh;
+      background:var(--dark);
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:100px 24px 80px; text-align:center;
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background:url('images/desks.jpg') center/cover no-repeat; opacity:0.22;
+    }
+    .hero-grad {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,61,38,0.7) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.8) 100%);
+    }
+    .hero-content { position:relative; z-index:1; max-width:760px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.28);
+      color:var(--gold2); padding:8px 18px; border-radius:100px;
+      font-size:12px; font-weight:600; letter-spacing:1px;
+      text-transform:uppercase; margin-bottom:28px;
+    }
+    .hero-h1 {
+      font-size:clamp(38px,7.5vw,80px);
+      font-weight:900; line-height:1.05; letter-spacing:-2px;
+      color:#fff; margin-bottom:24px;
+    }
+    .hero-h1 .gold { color:var(--gold2); }
+    .hero-sub {
+      font-size:clamp(15px,2.2vw,18px);
+      color:rgba(255,255,255,0.6); line-height:1.75;
+      max-width:560px; margin:0 auto 40px;
+    }
+    .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn-gold {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--gold); color:var(--dark);
+      padding:16px 32px; border-radius:100px;
+      font-size:14px; font-weight:700; text-decoration:none;
+      box-shadow:0 4px 32px rgba(201,168,76,0.35); transition:all 0.2s;
+    }
+    .btn-gold:hover { background:var(--gold2); transform:translateY(-2px); }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+      color:#fff; padding:16px 28px; border-radius:100px;
+      font-size:14px; font-weight:500; text-decoration:none; transition:all 0.2s;
+    }
+    .btn-ghost:hover { background:rgba(255,255,255,0.12); }
+    .hero-loc {
+      margin-top:36px; color:rgba(255,255,255,0.35);
+      font-size:13px; display:flex; align-items:center;
+      justify-content:center; gap:6px;
+    }
+    .hero-scroll-line {
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      width:1px; height:60px;
+      background:linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+      animation:scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100%{opacity:0.2;height:40px} 50%{opacity:1;height:60px} }
+
+    /* ─────────────── STATS ─────────────── */
+    #stats {
+      background:var(--dark2);
+      border-top:1px solid rgba(255,255,255,0.04);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      padding:44px 24px;
+    }
+    .stats-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      max-width:1120px; margin:0 auto;
+    }
+    .stat-item {
+      text-align:center; padding:0 20px;
+      border-right:1px solid rgba(255,255,255,0.06);
+    }
+    .stat-item:last-child { border-right:none; }
+    .stat-num {
+      font-size:clamp(32px,4vw,48px); font-weight:900;
+      color:var(--gold2); line-height:1; letter-spacing:-1px; margin-bottom:6px;
+    }
+    .stat-label { font-size:13px; color:rgba(255,255,255,0.45); font-weight:500; }
+
+    /* ─────────────── SECTIONS ─────────────── */
+    .section { padding:96px 0; }
+    .sec-header { margin-bottom:64px; }
+    .sec-header.center { text-align:center; }
+    .sec-header.center .sec-sub,
+    .sec-header.center .sec-line { margin-left:auto; margin-right:auto; }
+    .sec-h2 {
+      font-size:clamp(28px,4.5vw,48px);
+      font-weight:900; line-height:1.1; letter-spacing:-1px; margin-bottom:16px;
+    }
+    .sec-h2 .accent { color:var(--green2); }
+    .sec-h2 .accent-gold { color:var(--gold); }
+    .sec-h2-light { color:#fff; }
+    .sec-h2-light .accent { color:var(--gold2); }
+    .sec-sub {
+      font-size:clamp(15px,2vw,17px); color:var(--muted); line-height:1.75; max-width:560px;
+    }
+    .sec-sub-light { color:rgba(255,255,255,0.45); }
+    .sec-line {
+      display:block; width:40px; height:3px;
+      background:var(--gold); border-radius:2px; margin:20px 0 36px;
+    }
+
+    /* ─────────────── FEATURES ─────────────── */
+    #features { background:#fff; }
+    .features-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:2px; background:var(--off2); border:2px solid var(--off2);
+      border-radius:24px; overflow:hidden;
+    }
+    .feat-card { background:#fff; padding:36px 32px; transition:background 0.2s; }
+    .feat-card:hover { background:#f9f9f7; }
+    .feat-icon {
+      width:52px; height:52px; border-radius:14px;
+      background:var(--green); display:flex; align-items:center; justify-content:center;
+      color:#fff; margin-bottom:20px; transition:transform 0.3s;
+    }
+    .feat-card:hover .feat-icon { transform:scale(1.08) rotate(-3deg); }
+    .feat-card h3 { font-size:16px; font-weight:800; margin-bottom:8px; }
+    .feat-card p  { font-size:14px; color:var(--muted); line-height:1.7; }
+
+    /* ─────────────── AMENITIES ─────────────── */
+    #amenities { background:var(--dark); }
+    .amenities-grid {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+    }
+    .amenity {
+      display:flex; align-items:flex-start; gap:14px;
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
+      border-radius:16px; padding:20px 18px; transition:all 0.2s;
+    }
+    .amenity:hover {
+      background:rgba(201,168,76,0.07); border-color:rgba(201,168,76,0.2);
+    }
+    .amenity-icon {
+      flex:none; width:42px; height:42px; border-radius:12px;
+      background:rgba(201,168,76,0.1); display:flex;
+      align-items:center; justify-content:center; color:var(--gold2);
+    }
+    .amenity strong { display:block; font-size:14px; font-weight:700; color:#fff; margin-bottom:3px; }
+    .amenity small  { display:block; font-size:12px; color:rgba(255,255,255,0.4); line-height:1.4; }
+
+    /* ─────────────── WHY ─────────────── */
+    #why { background:var(--off); }
+    .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .why-points { display:flex; flex-direction:column; gap:0; margin-top:8px; }
+    .why-point {
+      display:flex; gap:16px; padding:20px 0;
+      border-bottom:1px solid var(--off2);
+    }
+    .why-point:last-child { border-bottom:none; }
+    .wp-icon {
+      flex:none; width:40px; height:40px; border-radius:10px;
+      background:var(--green); display:flex;
+      align-items:center; justify-content:center; color:#fff; margin-top:2px;
+    }
+    .wp-text h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+    .wp-text p  { font-size:13px; color:var(--muted); line-height:1.6; }
+    .why-img {
+      border-radius:24px; overflow:hidden; aspect-ratio:4/5; position:relative;
+    }
+    .why-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+    .why-img:hover img { transform:scale(1.03); }
+    .why-badge {
+      position:absolute; bottom:20px; left:20px; right:20px;
+      background:rgba(10,10,10,0.85); backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px; padding:16px 20px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .wbd { width:10px; height:10px; border-radius:50%; background:#22c55e; flex:none;
+           animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,.1)} }
+    .wbt strong { display:block; font-size:14px; font-weight:700; color:#fff; }
+    .wbt span   { font-size:12px; color:rgba(255,255,255,0.5); }
+    .why-img-ph {
+      width:100%; height:100%;
+      background:linear-gradient(135deg, var(--green), var(--green2));
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:rgba(255,255,255,0.4); gap:12px; font-size:13px;
+      text-transform:uppercase; letter-spacing:1px;
+    }
+
+    /* ─────────────── EXAM GRID ─────────────── */
+    #who { background:#fff; }
+    .exam-grid {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:10px;
+    }
+    .exam-card {
+      background:var(--off); border:1.5px solid var(--off2);
+      border-radius:16px; padding:22px 12px; text-align:center;
+      transition:all 0.25s cubic-bezier(0.16,1,0.3,1); cursor:default;
+    }
+    .exam-card:hover {
+      background:var(--dark); border-color:var(--dark);
+      transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.12);
+    }
+    .exam-card:hover .exam-name { color:#fff; }
+    .exam-card:hover .exam-sub  { color:rgba(255,255,255,.5); }
+    .exam-ic { font-size:26px; margin-bottom:10px; }
+    .exam-name { font-size:14px; font-weight:800; color:#111; margin-bottom:3px; }
+    .exam-sub  { font-size:11px; color:var(--muted); font-weight:500; }
+    .exam-note {
+      margin-top:28px; text-align:center; font-size:13px; color:var(--muted);
+      background:var(--off); border:1px solid var(--off2);
+      border-radius:12px; padding:14px 20px;
+      max-width:600px; margin-left:auto; margin-right:auto;
+    }
+
+    /* ─────────────── STEPS ─────────────── */
+    #experience { background:var(--dark2); }
+    .steps { display:flex; flex-direction:column; }
+    .step-row {
+      display:flex; gap:28px; align-items:flex-start;
+      padding:28px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .step-row:last-child { border-bottom:none; }
+    .step-num {
+      flex:none; min-width:52px; height:52px;
+      border-radius:16px; display:flex; align-items:center; justify-content:center;
+      font-size:20px; font-weight:900;
+      background:rgba(201,168,76,.1); color:var(--gold2);
+      border:1px solid rgba(201,168,76,.15);
+    }
+    .step-body h3 { font-size:17px; font-weight:800; color:#fff; margin-bottom:6px; }
+    .step-body p  { font-size:14px; color:rgba(255,255,255,.45); line-height:1.65; }
+
+    /* ─────────────── GALLERY ─────────────── */
+    #gallery { background:#fff; }
+    .gallery-wrap {
+      display:grid; grid-template-columns:5fr 3fr; gap:16px;
+      border-radius:24px; overflow:hidden;
+    }
+    .gal-main { position:relative; overflow:hidden; }
+    .gal-main img { width:100%; height:520px; object-fit:cover; transition:transform 0.6s; }
+    .gal-main:hover img { transform:scale(1.03); }
+    .gal-side { display:flex; flex-direction:column; gap:16px; }
+    .gal-th   { position:relative; overflow:hidden; flex:1; min-height:140px; }
+    .gal-th img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+    .gal-th:hover img { transform:scale(1.05); }
+    .gal-lbl {
+      position:absolute; bottom:12px; left:12px;
+      background:rgba(10,10,10,.75); backdrop-filter:blur(8px);
+      color:#fff; font-size:11px; font-weight:600;
+      padding:5px 12px; border-radius:100px; letter-spacing:.5px;
+    }
+    .gal-ph {
+      width:100%; height:100%;
+      background:linear-gradient(135deg, #1a3a2e, #2d5a45);
+      display:flex; flex-direction:column; align-items:center;
+      justify-content:center; color:rgba(255,255,255,.35); gap:8px;
+      font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:20px;
+      text-align:center; min-height:140px;
+    }
+    .gal-add-note {
+      margin-top:20px; text-align:center;
+      font-size:13px; color:var(--muted);
+      background:var(--off); border:1px dashed var(--off2);
+      border-radius:12px; padding:14px 20px;
+    }
+
+    /* ─────────────── REVIEWS ─────────────── */
+    #reviews { background:var(--off); }
+    .reviews-card {
+      background:#fff; border:1px solid var(--off2);
+      border-radius:24px; padding:40px;
+      display:flex; align-items:center; gap:40px; flex-wrap:wrap;
+    }
+    .reviews-left { flex:1; min-width:240px; }
+    .reviews-left h3 { font-size:22px; font-weight:800; margin-bottom:8px; }
+    .reviews-left p  { font-size:14px; color:var(--muted); line-height:1.7; max-width:380px; }
+    .reviews-actions { display:flex; flex-direction:column; gap:10px; min-width:200px; }
+    .btn-review {
+      display:inline-flex; align-items:center; gap:10px;
+      padding:14px 24px; border-radius:14px;
+      font-size:14px; font-weight:700; text-decoration:none; transition:all 0.2s;
+    }
+    .btn-google {
+      background:#fff; border:1.5px solid var(--off2); color:#111;
+      box-shadow:0 2px 12px rgba(0,0,0,.07);
+    }
+    .btn-google:hover { border-color:#4285f4; color:#4285f4; transform:translateY(-1px); }
+    .btn-wa-review { background:#22c55e; color:#fff; }
+    .btn-wa-review:hover { background:#16a34a; transform:translateY(-1px); }
+
+    /* ─────────────── INQUIRY FORM ─────────────── */
+    #inquiry { background:var(--dark); }
+    .inquiry-wrap {
+      display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+    }
+    .inquiry-text h2 { color:#fff; }
+    .inquiry-text .sec-sub { color:rgba(255,255,255,.5); margin-top:12px; }
+    .inq-form {
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+      border-radius:24px; padding:32px;
+    }
+    .inq-form h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:24px; }
+    .inq-group { margin-bottom:16px; }
+    .inq-group label { display:block; font-size:12px; font-weight:700; color:rgba(255,255,255,.5); margin-bottom:6px; text-transform:uppercase; letter-spacing:.8px; }
+    .inq-group input,
+    .inq-group select {
+      width:100%; padding:13px 16px; border-radius:12px;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+      color:#fff; font-size:15px; font-family:inherit; outline:none;
+      transition:border-color .2s; appearance:none;
+    }
+    .inq-group input::placeholder { color:rgba(255,255,255,.3); }
+    .inq-group input:focus,
+    .inq-group select:focus { border-color:rgba(201,168,76,.5); }
+    .inq-group select option { background:#111; color:#fff; }
+    .inq-submit {
+      width:100%; padding:15px; border-radius:14px;
+      background:var(--gold); color:var(--dark);
+      border:none; font-size:15px; font-weight:700; cursor:pointer;
+      font-family:inherit; transition:background .2s, transform .15s;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .inq-submit:hover { background:var(--gold2); transform:translateY(-1px); }
+
+    /* ─────────────── PRICING ─────────────── */
+    #pricing { background:#fff; }
+    .pricing-note {
+      text-align:center; font-size:14px; color:var(--muted);
+      margin-bottom:40px;
+    }
+    .pricing-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    .price-card {
+      border:1.5px solid var(--off2); border-radius:24px; padding:32px 28px;
+      position:relative; overflow:hidden; transition:all .25s;
+    }
+    .price-card:hover { transform:translateY(-4px); box-shadow:0 24px 60px rgba(0,0,0,.09); }
+    .price-card.pop {
+      background:var(--dark); border-color:var(--dark);
+    }
+    .pop-badge {
+      position:absolute; top:20px; right:20px;
+      background:var(--gold); color:var(--dark);
+      font-size:10px; font-weight:800; letter-spacing:1.5px;
+      text-transform:uppercase; padding:4px 12px; border-radius:100px;
+    }
+    .price-tier { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; }
+    .pop .price-tier { color:rgba(255,255,255,.45); }
+    .price-amount {
+      font-size:clamp(36px,5vw,52px); font-weight:900;
+      line-height:1; margin-bottom:4px; letter-spacing:-1px;
+    }
+    .pop .price-amount { color:#fff; }
+    .price-amount sup { font-size:20px; vertical-align:super; color:var(--gold); }
+    .price-period { font-size:13px; color:var(--muted); margin-bottom:28px; }
+    .pop .price-period { color:rgba(255,255,255,.4); }
+    .price-divider { border:none; border-top:1px solid var(--off2); margin:0 0 24px; }
+    .pop .price-divider { border-color:rgba(255,255,255,.08); }
+    .price-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
+    .price-features li {
+      display:flex; align-items:center; gap:10px;
+      font-size:14px; color:#333;
+    }
+    .pop .price-features li { color:rgba(255,255,255,.7); }
+    .price-features li::before {
+      content:''; flex:none; width:20px; height:20px; border-radius:50%;
+      background:rgba(13,61,38,.1); display:block;
+      background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d3d26' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:center; background-size:12px;
+    }
+    .pop .price-features li::before {
+      background-color:rgba(201,168,76,.15);
+      background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e8c96a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    .price-btn {
+      display:block; text-align:center; padding:14px 20px;
+      border-radius:14px; font-size:14px; font-weight:700; text-decoration:none; transition:all .2s;
+    }
+    .pbtn-outline { border:1.5px solid var(--off2); color:#111; }
+    .pbtn-outline:hover { border-color:var(--green); color:var(--green); }
+    .pbtn-gold { background:var(--gold); color:var(--dark); box-shadow:0 4px 20px rgba(201,168,76,.3); }
+    .pbtn-gold:hover { background:var(--gold2); transform:translateY(-1px); }
+
+    /* ─────────────── LOCATION ─────────────── */
+    #location { background:var(--off); }
+    .loc-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+    .loc-addr {
+      background:#fff; border:1px solid var(--off2);
+      border-radius:16px; padding:24px; margin:24px 0;
+    }
+    .loc-addr p { font-size:15px; line-height:1.9; color:#222; font-weight:500; }
+    .loc-btns { display:flex; flex-direction:column; gap:10px; }
+    .loc-btn {
+      display:flex; align-items:center; gap:12px;
+      padding:14px 20px; border-radius:14px;
+      text-decoration:none; font-weight:600; font-size:14px; transition:all .2s;
+    }
+    .lb-green { background:var(--green); color:#fff; }
+    .lb-green:hover { background:var(--green2); transform:translateX(3px); }
+    .lb-wa { background:#22c55e; color:#fff; }
+    .lb-wa:hover { background:#16a34a; transform:translateX(3px); }
+    .lb-dir { background:#fff; border:1px solid var(--off2); color:#333; }
+    .lb-dir:hover { background:var(--off2); transform:translateX(3px); }
+    .map-wrap { border-radius:20px; overflow:hidden; box-shadow:0 8px 48px rgba(0,0,0,.1); height:380px; background:var(--off); }
+    .map-wrap iframe { width:100%; height:100%; border:0; display:block; }
+    .map-note { font-size:12px; color:var(--muted); margin-top:8px; text-align:center; }
+
+    /* ─────────────── FINAL CTA ─────────────── */
+    #cta {
+      background:var(--green); padding:100px 24px; text-align:center;
+      position:relative; overflow:hidden;
+    }
+    .cta-bg { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:clamp(80px,15vw,180px); font-weight:900; color:rgba(255,255,255,.03); white-space:nowrap; pointer-events:none; user-select:none; letter-spacing:-4px; }
+    #cta .tag { position:relative; z-index:1; }
+    #cta h2 { font-size:clamp(32px,5.5vw,60px); font-weight:900; color:#fff; margin-bottom:14px; letter-spacing:-1.5px; position:relative; z-index:1; }
+    #cta h2 span { color:var(--gold2); }
+    #cta p  { font-size:clamp(15px,2vw,18px); color:rgba(255,255,255,.6); margin-bottom:44px; position:relative; z-index:1; }
+    .cta-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+    .cta-actions a {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:16px 28px; border-radius:100px;
+      font-size:15px; font-weight:700; text-decoration:none; transition:all .2s;
+    }
+    .ca-call { background:var(--gold); color:var(--dark); box-shadow:0 4px 24px rgba(201,168,76,.35); }
+    .ca-call:hover { background:var(--gold2); transform:translateY(-2px); }
+    .ca-wa   { background:#22c55e; color:#fff; }
+    .ca-wa:hover { transform:translateY(-2px); }
+    .ca-dir  { background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.2); }
+    .ca-dir:hover { background:rgba(255,255,255,.15); transform:translateY(-2px); }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer {
+      background:var(--dark2); border-top:1px solid rgba(255,255,255,.06);
+      padding:40px 24px;
+    }
+    .footer-in {
+      max-width:1120px; margin:0 auto;
+      display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center;
+    }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo img { width:34px; height:34px; border-radius:50%; opacity:.8; }
+    .footer-logo-name { font-size:15px; font-weight:800; color:rgba(255,255,255,.8); }
+    .footer-logo-name em { color:var(--gold2); font-style:normal; }
+    .footer-mid { text-align:center; font-size:12px; color:rgba(255,255,255,.3); line-height:1.9; }
+    .footer-right { text-align:right; font-size:12px; color:rgba(255,255,255,.3); }
+    .footer-right a { color:rgba(255,255,255,.4); text-decoration:none; }
+    .footer-right a:hover { color:var(--gold2); }
+    .footer-privacy { margin-top:16px; padding-top:16px; border-top:1px solid rgba(255,255,255,.06); text-align:center; font-size:11px; color:rgba(255,255,255,.2); }
+
+    /* ─────────────── STICKY MOBILE BAR ─────────────── */
+    .mob-sticky {
+      display:none; position:fixed; bottom:0; left:0; right:0;
+      background:rgba(10,10,10,.97); backdrop-filter:blur(20px);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:12px 16px; padding-bottom:calc(12px + env(safe-area-inset-bottom));
+      gap:10px; z-index:900;
+    }
+    .mob-sticky a {
+      flex:1; text-align:center; padding:14px;
+      border-radius:14px; font-size:14px; font-weight:700;
+      text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px;
+    }
+    .ms-call { background:var(--gold); color:var(--dark); }
+    .ms-wa   { background:#22c55e; color:#fff; }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+    @media (max-width:960px) {
+      .features-grid { grid-template-columns:repeat(2,1fr); }
+      .amenities-grid { grid-template-columns:repeat(2,1fr); }
+      .why-grid { grid-template-columns:1fr; gap:40px; }
+      .why-img { aspect-ratio:16/9; }
+      .exam-grid { grid-template-columns:repeat(3,1fr); }
+      .pricing-grid { grid-template-columns:1fr; max-width:440px; margin:0 auto; }
+      .loc-grid { grid-template-columns:1fr; }
+      .map-wrap { height:260px; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+      .stat-item { border-right:none; }
+      .stat-item:nth-child(odd) { border-right:1px solid rgba(255,255,255,.06); }
+      .inquiry-wrap { grid-template-columns:1fr; gap:32px; }
+    }
+    @media (max-width:768px) {
+      .nav-links, .nav-cta { display:none; }
+      .hamburger { display:flex; }
+      .section { padding:72px 0; }
+      .gallery-wrap { grid-template-columns:1fr; }
+      .gal-main img { height:260px; }
+      .gal-side { flex-direction:row; }
+      .mob-sticky { display:flex; }
+      footer { padding-bottom:calc(32px + 64px + env(safe-area-inset-bottom)); }
+      .footer-in { grid-template-columns:1fr; text-align:center; }
+      .footer-right { text-align:center; }
+    }
+    @media (max-width:540px) {
+      .features-grid { grid-template-columns:1fr; }
+      .exam-grid { grid-template-columns:repeat(2,1fr); }
+      .hero-actions { flex-direction:column; align-items:center; }
+      .btn-gold, .btn-ghost { width:100%; max-width:280px; justify-content:center; }
+      .gal-side { flex-direction:column; }
+      .reviews-card { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Iqra Library home">
+      <img src="images/logo.svg" alt="Iqra Library logo" width="38" height="38"/>
+      <span class="nav-logo-text">Iqra <em>Library</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Facilities</a></li>
+      <li><a href="#why">Why Iqra</a></li>
+      <li><a href="#who">Who It's For</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+    <a href="tel:+919334239792" class="nav-cta">Book a Seat →</a>
+    <button class="hamburger" id="hamburger"
+            aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mob-menu" id="mobMenu" role="menu">
+  <a href="#features"    onclick="closeMob()" role="menuitem">Facilities</a>
+  <a href="#amenities"   onclick="closeMob()" role="menuitem">Amenities</a>
+  <a href="#why"         onclick="closeMob()" role="menuitem">Why Iqra</a>
+  <a href="#who"         onclick="closeMob()" role="menuitem">Who It's For</a>
+  <a href="#inquiry"     onclick="closeMob()" role="menuitem">Book a Seat</a>
+  <a href="#pricing"     onclick="closeMob()" role="menuitem">Plans & Pricing</a>
+  <a href="#location"    onclick="closeMob()" role="menuitem">Location</a>
+  <a href="tel:+919334239792" class="mob-cta-btn">📞 Call to Book Now</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grad" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="#22c55e"/></svg>
+      Open 24 / 7 · AC Study Space
+    </div>
+    <h1 class="hero-h1">Your Focus.<br><span class="gold">Your Future.</span></h1>
+    <p class="hero-sub">
+      Narkatiaganj's most serious study space — built for students
+      who refuse to let their environment hold them back.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:+919334239792" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9 19.79 19.79 0 0 1 1.61 3.27 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Book Your Seat
+      </a>
+      <a href="#features" class="btn-ghost">Explore the Space</a>
+    </div>
+    <p class="hero-loc">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Krishi Road, Nandpur Dala, Narkatiaganj, West Champaran
+    </p>
+  </div>
+  <div class="hero-scroll-line" aria-hidden="true"></div>
+</section>
+
+<!-- ── STATS (only factual numbers) ── -->
+<section id="stats" aria-label="Key facts">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Open Every Day</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">AC Environment</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Contact Numbers</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Amenities</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section id="features" class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="tag">Our Facilities</div>
+      <h2 class="sec-h2">Everything you need.<br><span class="accent">Nothing that distracts.</span></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+        </div>
+        <h3>AC Study Environment</h3>
+        <p>Fully air-conditioned space maintained at a comfortable temperature so you can stay focused for hours.</p>
+      </div>
+      <div class="feat-card reveal d1">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </div>
+        <h3>Proper Lighting</h3>
+        <p>Well-designed lighting that reduces eye strain and keeps you alert through long study sessions.</p>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 21v-4M16 21v-4"/></svg>
+        </div>
+        <h3>Ergonomic Seating</h3>
+        <p>Individual desk and chair setup — dedicated, personal, and designed for marathon study hours.</p>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </div>
+        <h3>Silent Zone</h3>
+        <p>A zero-distraction environment. No noise, no interruptions — just you and your goals.</p>
+      </div>
+      <div class="feat-card reveal d4">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </div>
+        <h3>High-Speed Wi-Fi</h3>
+        <p>Fast and reliable internet for online courses, mock tests, and digital study resources.</p>
+      </div>
+      <div class="feat-card reveal d5">
+        <div class="feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 13 9 20 9"/><path d="M22 12.5V6l-6-4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h9"/><path d="M19 16v6M16 19h6"/></svg>
+        </div>
+        <h3>Power Backup</h3>
+        <p>Never lose a study session. Full power backup ensures zero disruption, even during cuts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AMENITIES ── -->
+<section id="amenities" class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="tag">More Amenities</div>
+      <h2 class="sec-h2 sec-h2-light">Built to keep you <span class="accent">here longer.</span></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity reveal">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div><strong>Open 24 × 7</strong><small>Study at 3 AM or 3 PM — your schedule, your rules.</small></div>
+      </div>
+      <div class="amenity reveal d1">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <div><strong>CCTV Surveillance</strong><small>Full campus monitored. Safe, secure, always.</small></div>
+      </div>
+      <div class="amenity reveal d2">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div><strong>Personal Lockers</strong><small>Leave your books and bag — your locker keeps them safe.</small></div>
+      </div>
+      <div class="amenity reveal d3">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div><strong>Girls' Cabin</strong><small>Separate, dedicated and private study area for girls.</small></div>
+      </div>
+      <div class="amenity reveal d4">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 7 0 0 1 0 14 10 7 0 0 1 0-14"/><path d="M12 16c0 3.31-1.79 6-4 6m4-6c0 3.31 1.79 6 4 6M2 9h20"/></svg>
+        </div>
+        <div><strong>RO Drinking Water</strong><small>Hot &amp; cold purified drinking water available always.</small></div>
+      </div>
+      <div class="amenity reveal d5">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div><strong>Parking</strong><small>Secure parking for bicycles and motorcycles.</small></div>
+      </div>
+      <div class="amenity reveal">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div><strong>Power Backup</strong><small>Uninterrupted power — zero disruption to study time.</small></div>
+      </div>
+      <div class="amenity reveal d1">
+        <div class="amenity-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </div>
+        <div><strong>Clean &amp; Hygienic</strong><small>Maintained and refreshed daily.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY IQRA ── -->
+<section id="why" class="section" style="background:var(--off)">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text">
+        <div class="tag reveal">Why Iqra Library</div>
+        <h2 class="sec-h2 reveal d1">Your environment<br><span class="accent">shapes your result.</span></h2>
+        <span class="sec-line reveal d2"></span>
+        <div class="why-points reveal d2">
+          <div class="why-point">
+            <div class="wp-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="wp-text"><h4>Distraction-free by design</h4><p>No social pressure, no noise, no family interruptions. Just pure focus.</p></div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="wp-text"><h4>Study on your schedule</h4><p>Early morning or late night — we are open every hour of every day.</p></div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="wp-text"><h4>Surrounded by serious students</h4><p>Being around other focused students silently pushes you to stay on track.</p></div>
+          </div>
+          <div class="why-point">
+            <div class="wp-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="wp-text"><h4>Consistency builds results</h4><p>Show up every day. Build the habit. The results will follow.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img reveal d3">
+        <img src="images/chairs.jpg" alt="Comfortable seating at Iqra Library"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="why-img-ph" style="display:none">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <p>Study Space</p>
+        </div>
+        <div class="why-badge">
+          <div class="wbd" aria-hidden="true"></div>
+          <div class="wbt">
+            <strong>Open Right Now</strong>
+            <span>Come in, find your seat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IT'S FOR ── -->
+<section id="who" class="section" style="background:#fff">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <div class="tag">Who It's For</div>
+      <h2 class="sec-h2">Built for every <span class="accent">serious learner</span></h2>
+      <span class="sec-line"></span>
+      <p class="sec-sub">Preparing for any exam? Iqra Library is your ideal study ground.</p>
+    </div>
+    <div class="exam-grid">
+      <div class="exam-card reveal">    <div class="exam-ic">⚗️</div><div class="exam-name">JEE</div><div class="exam-sub">Engineering</div></div>
+      <div class="exam-card reveal d1"> <div class="exam-ic">🩺</div><div class="exam-name">NEET</div><div class="exam-sub">Medical</div></div>
+      <div class="exam-card reveal d2"> <div class="exam-ic">🏛️</div><div class="exam-name">UPSC</div><div class="exam-sub">Civil Services</div></div>
+      <div class="exam-card reveal d3"> <div class="exam-ic">📋</div><div class="exam-name">BPSC</div><div class="exam-sub">State Services</div></div>
+      <div class="exam-card reveal d4"> <div class="exam-ic">📝</div><div class="exam-name">SSC</div><div class="exam-sub">Combined</div></div>
+      <div class="exam-card reveal">    <div class="exam-ic">🚂</div><div class="exam-name">Railway</div><div class="exam-sub">RRB Exams</div></div>
+      <div class="exam-card reveal d1"> <div class="exam-ic">🏦</div><div class="exam-name">Banking</div><div class="exam-sub">IBPS / SBI</div></div>
+      <div class="exam-card reveal d2"> <div class="exam-ic">🔬</div><div class="exam-name">CSIR-NET</div><div class="exam-sub">Research</div></div>
+      <div class="exam-card reveal d3"> <div class="exam-ic">🎓</div><div class="exam-name">College</div><div class="exam-sub">Students</div></div>
+      <div class="exam-card reveal d4"> <div class="exam-ic">✨</div><div class="exam-name">Any Exam</div><div class="exam-sub">All Welcome</div></div>
+    </div>
+    <p class="exam-note reveal">ℹ️ Iqra Library is a <strong>self-study space — not a coaching centre</strong>. Students bring their own books and study material and prepare at their own pace.</p>
+  </div>
+</section>
+
+<!-- ── STEPS ── -->
+<section id="experience" class="section" style="background:var(--dark2)">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="tag">The Experience</div>
+      <h2 class="sec-h2 sec-h2-light">Come in. Sit down. <span class="accent">Get to work.</span></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="steps">
+      <div class="step-row reveal">
+        <div class="step-num">01</div>
+        <div class="step-body"><h3>Walk In</h3><p>Step inside and leave every distraction at the door. Your focus space is ready.</p></div>
+      </div>
+      <div class="step-row reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-body"><h3>Find Your Seat</h3><p>Settle into your personal desk. Arrange your material and get comfortable.</p></div>
+      </div>
+      <div class="step-row reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-body"><h3>Phone Down</h3><p>Put it away. For the next few hours, you have one job: study.</p></div>
+      </div>
+      <div class="step-row reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-body"><h3>Deep Work</h3><p>Calm environment, proper lighting, zero noise. Your best study session starts here.</p></div>
+      </div>
+      <div class="step-row reveal d4">
+        <div class="step-num">05</div>
+        <div class="step-body"><h3>Come Back Tomorrow</h3><p>Consistency is everything. The students who succeed are the ones who show up every day.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery" class="section" style="background:#fff">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <div class="tag">The Space</div>
+      <h2 class="sec-h2">Designed around <span class="accent">your focus</span></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="gallery-wrap reveal d1">
+      <div class="gal-main">
+        <img src="images/desks.jpg" alt="Study desks at Iqra Library — rows of individual workstations" loading="lazy"/>
+        <span class="gal-lbl">Study Desks</span>
+      </div>
+      <div class="gal-side">
+        <div class="gal-th">
+          <img src="images/chairs.jpg" alt="Comfortable chairs at Iqra Library" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="gal-ph" style="display:none">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 21v-4M16 21v-4"/></svg>
+            <p>Chairs photo</p>
+          </div>
+          <span class="gal-lbl">Ergonomic Chairs</span>
+        </div>
+        <div class="gal-th">
+          <div class="gal-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <p>Add more photos<br/>of the space</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="gal-add-note reveal d2">
+      📷 <strong>More photos coming soon</strong> — entrance, girls' cabin, lockers, night view. Send photos to your developer to update this section.
+    </p>
+  </div>
+</section>
+
+<!-- ── STUDENT REVIEWS (no fake reviews) ── -->
+<section id="reviews" class="section" style="background:var(--off)">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <div class="tag">Student Reviews</div>
+      <h2 class="sec-h2">What students <span class="accent">say about us</span></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="reviews-card reveal d1">
+      <div class="reviews-left">
+        <h3>Share your experience</h3>
+        <p>
+          Iqra Library is growing because of students who found their focus here.
+          If you've studied with us, leave an honest review — it helps the next student
+          make the right choice.
+        </p>
+      </div>
+      <div class="reviews-actions">
+        <a href="https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsdiY1GsfLo"
+           target="_blank" rel="noopener" class="btn-review btn-google">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Rate on Google Maps
+        </a>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20share%20my%20feedback%20about%20Iqra%20Library"
+           target="_blank" rel="noopener" class="btn-review btn-wa-review">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          WhatsApp Feedback
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INQUIRY FORM → WHATSAPP ── -->
+<section id="inquiry" class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="inquiry-wrap">
+      <div class="inquiry-text">
+        <div class="tag reveal">Book a Seat</div>
+        <h2 class="sec-h2 sec-h2-light reveal d1">Reserve your <span class="accent">study space</span></h2>
+        <p class="sec-sub sec-sub-light reveal d2" style="margin-top:12px">
+          Fill the form and we'll get back to you on WhatsApp instantly.
+          You can also call or visit us directly — no appointment needed.
+        </p>
+        <div style="margin-top:32px; display:flex; flex-direction:column; gap:12px;" class="reveal d3">
+          <a href="tel:+919334239792" class="loc-btn lb-green" style="max-width:260px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9 19.79 19.79 0 0 1 1.61 3.27 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 93342 39792
+          </a>
+          <a href="tel:+919631095377" class="loc-btn lb-green" style="max-width:260px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9 19.79 19.79 0 0 1 1.61 3.27 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 96310 95377
+          </a>
+        </div>
+      </div>
+      <div class="inq-form reveal d2">
+        <h3>Quick Inquiry</h3>
+        <form id="inqForm" novalidate>
+          <div class="inq-group">
+            <label for="inq-name">Your Name</label>
+            <input type="text" id="inq-name" placeholder="Aapka naam likhein" required autocomplete="name"/>
+          </div>
+          <div class="inq-group">
+            <label for="inq-phone">WhatsApp Number</label>
+            <input type="tel" id="inq-phone" placeholder="10-digit number" required autocomplete="tel"/>
+          </div>
+          <div class="inq-group">
+            <label for="inq-plan">Interested In</label>
+            <select id="inq-plan">
+              <option value="Morning Shift (5AM–11AM) – ₹400/month">🌅 Morning Shift (5AM–11AM) – ₹400/month</option>
+              <option value="Noon Shift (11AM–5PM) – ₹400/month">☀️ Noon Shift (11AM–5PM) – ₹400/month</option>
+              <option value="Night Shift (5PM–10PM) – ₹400/month">🌙 Night Shift (5PM–10PM) – ₹400/month</option>
+              <option value="Double Shift (any 2) – ₹800/month" selected>⚡ Double Shift (any 2) – ₹800/month</option>
+              <option value="Full Time (5AM–10PM) – ₹1000/month">🏆 Full Time (5AM–10PM) – ₹1000/month</option>
+              <option value="Just want to visit first">Just want to visit first</option>
+            </select>
+          </div>
+          <button type="submit" class="inq-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Send on WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING (Shift-wise) ── -->
+<section id="pricing" class="section" style="background:var(--off)">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <div class="tag">Plans & Pricing</div>
+      <h2 class="sec-h2">Study on <span class="accent">your shift</span></h2>
+      <span class="sec-line"></span>
+      <p class="sec-sub" style="margin:0 auto">Choose the hours that fit your routine. Monthly seat booking — no daily hassle.</p>
+    </div>
+
+    <!-- Shift Cards -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px;" class="shift-grid">
+
+      <!-- Morning Shift -->
+      <div class="price-card reveal" style="border-top:3px solid #f59e0b;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#fef3c7;color:#92400e;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:16px;">
+          🌅 Morning Shift
+        </div>
+        <div class="price-tier" style="color:#92400e;">5:00 AM — 11:00 AM</div>
+        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-period">per month · 6 hrs daily</div>
+        <hr class="price-divider"/>
+        <ul class="price-features">
+          <li>Best for early risers</li>
+          <li>Quiet morning hours</li>
+          <li>AC + power backup</li>
+          <li>Wi-Fi + drinking water</li>
+        </ul>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20Morning%20Shift%20(5AM-11AM)%20at%20Iqra%20Library"
+           class="price-btn pbtn-outline" target="_blank" rel="noopener">Book Morning →</a>
+      </div>
+
+      <!-- Noon Shift -->
+      <div class="price-card reveal d1" style="border-top:3px solid #10b981;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#d1fae5;color:#065f46;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:16px;">
+          ☀️ Noon Shift
+        </div>
+        <div class="price-tier" style="color:#065f46;">11:00 AM — 5:00 PM</div>
+        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-period">per month · 6 hrs daily</div>
+        <hr class="price-divider"/>
+        <ul class="price-features">
+          <li>Peak productivity hours</li>
+          <li>Full AC comfort</li>
+          <li>AC + power backup</li>
+          <li>Wi-Fi + drinking water</li>
+        </ul>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20Noon%20Shift%20(11AM-5PM)%20at%20Iqra%20Library"
+           class="price-btn pbtn-outline" target="_blank" rel="noopener">Book Noon →</a>
+      </div>
+
+      <!-- Night Shift -->
+      <div class="price-card reveal d2" style="border-top:3px solid #6366f1;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#ede9fe;color:#4c1d95;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:16px;">
+          🌙 Night Shift
+        </div>
+        <div class="price-tier" style="color:#4c1d95;">5:00 PM — 10:00 PM</div>
+        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-period">per month · 5 hrs daily</div>
+        <hr class="price-divider"/>
+        <ul class="price-features">
+          <li>Evening after college/work</li>
+          <li>Calm night atmosphere</li>
+          <li>AC + power backup</li>
+          <li>Wi-Fi + drinking water</li>
+        </ul>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20Night%20Shift%20(5PM-10PM)%20at%20Iqra%20Library"
+           class="price-btn pbtn-outline" target="_blank" rel="noopener">Book Night →</a>
+      </div>
+    </div>
+
+    <!-- Double + Full Time combo cards -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="combo-grid">
+
+      <!-- Double Shift -->
+      <div class="price-card reveal d1" style="background:var(--dark3,#1a1a1a); border-color:#333;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:16px;">
+          ⚡ Double Shift
+        </div>
+        <div class="price-tier" style="color:rgba(255,255,255,0.45);">Any 2 Shifts · 11–12 hrs</div>
+        <div class="price-amount" style="color:#fff;"><sup style="color:var(--gold2)">₹</sup>800</div>
+        <div class="price-period" style="color:rgba(255,255,255,0.4);">per month · save ₹0 vs 2 singles</div>
+        <hr class="price-divider" style="border-color:rgba(255,255,255,0.08);"/>
+        <ul class="price-features">
+          <li style="color:rgba(255,255,255,0.7);">Morning + Noon <em style="color:rgba(255,255,255,0.4);font-size:12px;">(5AM–5PM)</em></li>
+          <li style="color:rgba(255,255,255,0.7);">Noon + Night <em style="color:rgba(255,255,255,0.4);font-size:12px;">(11AM–10PM)</em></li>
+          <li style="color:rgba(255,255,255,0.7);">Morning + Night <em style="color:rgba(255,255,255,0.4);font-size:12px;">(pick 2)</em></li>
+          <li style="color:rgba(255,255,255,0.7);">All amenities included</li>
+        </ul>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20Double%20Shift%20at%20Iqra%20Library"
+           class="price-btn" style="border:1.5px solid rgba(201,168,76,0.4);color:var(--gold2);" target="_blank" rel="noopener">Book Double Shift →</a>
+      </div>
+
+      <!-- Full Time (most popular) -->
+      <div class="price-card pop reveal d2">
+        <div class="pop-badge">Best Value</div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.15);color:var(--gold2);padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700;margin-bottom:16px;">
+          🏆 Full Time
+        </div>
+        <div class="price-tier">All 3 Shifts · 5AM – 10PM</div>
+        <div class="price-amount"><sup>₹</sup>1000</div>
+        <div class="price-period">per month · 17 hrs daily access</div>
+        <hr class="price-divider"/>
+        <ul class="price-features">
+          <li>Morning + Noon + Night</li>
+          <li>5:00 AM to 10:00 PM</li>
+          <li>Personal locker included</li>
+          <li>AC + power backup</li>
+          <li>Wi-Fi + drinking water</li>
+          <li>CCTV security</li>
+        </ul>
+        <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20Full%20Time%20seat%20at%20Iqra%20Library"
+           class="price-btn pbtn-gold" target="_blank" rel="noopener">Book Full Time →</a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--muted)">
+      💡 All plans are monthly. Walk-in anytime for a free visit before booking.
+    </p>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .shift-grid { grid-template-columns: 1fr !important; }
+    .combo-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 769px) and (max-width: 960px) {
+    .shift-grid { grid-template-columns: repeat(2,1fr) !important; }
+  }
+</style>
+
+<!-- ── LOCATION ── -->
+<section id="location" class="section" style="background:#fff">
+  <div class="container">
+    <div class="loc-grid">
+      <div>
+        <div class="tag reveal">Find Us</div>
+        <h2 class="sec-h2 reveal d1">Come visit <span class="accent">Iqra Library</span></h2>
+        <span class="sec-line reveal d2"></span>
+        <div class="loc-addr reveal d2">
+          <p>🏫 <strong>Iqra Library</strong><br/>
+          Krishi Road, Nandpur Dala,<br/>
+          Narkatiaganj, West Champaran,<br/>
+          Bihar — 845 455</p>
+        </div>
+        <div class="loc-btns reveal d3">
+          <a href="tel:+919334239792" class="loc-btn lb-green">📞 +91 93342 39792</a>
+          <a href="tel:+919631095377" class="loc-btn lb-green">📞 +91 96310 95377</a>
+          <a href="tel:+919798712852" class="loc-btn lb-green">📞 +91 97987 12852</a>
+          <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Iqra%20Library" class="loc-btn lb-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+          <a href="https://maps.google.com/?q=Krishi+Road+Nandpur+Dala+Narkatiaganj+West+Champaran+Bihar+845455" class="loc-btn lb-dir" target="_blank" rel="noopener">📍 Get Directions</a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap reveal d2">
+          <iframe
+            src="https://maps.google.com/maps?q=27.1089425,84.4732441&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Iqra Library exact location on Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="cta">
+  <div class="cta-bg" aria-hidden="true">IQRA</div>
+  <div class="tag reveal">Start Today</div>
+  <h2 class="reveal d1">Ready to find your <span>focus?</span></h2>
+  <p class="reveal d2">Your seat is waiting. Your future is waiting. What are you waiting for?</p>
+  <div class="cta-actions reveal d3">
+    <a href="tel:+919334239792" class="ca-call">📞 Call to Book</a>
+    <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20a%20seat%20at%20Iqra%20Library" class="ca-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a href="https://maps.google.com/?q=Krishi+Road+Nandpur+Dala+Narkatiaganj+West+Champaran+Bihar" class="ca-dir" target="_blank" rel="noopener">📍 Get Directions</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-logo">
+      <img src="images/logo.svg" alt="Iqra Library logo" width="34" height="34"/>
+      <span class="footer-logo-name">Iqra <em>Library</em></span>
+    </div>
+    <div class="footer-mid">
+      <p>Krishi Road, Nandpur Dala, Narkatiaganj, West Champaran, Bihar</p>
+      <p>📞 93342 39792 &nbsp;·&nbsp; 96310 95377 &nbsp;·&nbsp; 97987 12852</p>
+      <p style="margin-top:4px">© 2026 Iqra Library. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <p>Open 24/7 · Every Day</p>
+      <!-- Add your Instagram handle below -->
+      <!-- <a href="https://instagram.com/iqralibrary" target="_blank" rel="noopener">Instagram →</a> -->
+      <p style="margin-top:8px"><a href="tel:+919334239792">Book a Seat →</a></p>
+    </div>
+  </div>
+  <p class="footer-privacy">
+    This website does not collect personal data. Seat inquiry forms open WhatsApp directly and no data is stored on this server.
+  </p>
+</footer>
+
+<!-- ── STICKY MOBILE BAR ── -->
+<div class="mob-sticky" aria-label="Quick contact">
+  <a href="tel:+919334239792" class="ms-call">📞 Call Now</a>
+  <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Iqra%20Library" class="ms-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+  /* Mark JS as loaded (enables .reveal animations, keeps content visible without JS) */
+  document.documentElement.classList.add('js');
+
+  /* Hamburger with aria-expanded */
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu   = document.getElementById('mobMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMob() {
+    mobMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  /* Scroll reveal */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  /* Inquiry form → WhatsApp */
+  document.getElementById('inqForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name  = document.getElementById('inq-name').value.trim();
+    const phone = document.getElementById('inq-phone').value.trim();
+    const plan  = document.getElementById('inq-plan').value;
+    if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+    const msg = encodeURIComponent(
+      'Hi, I want to know about Iqra Library.\n\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Interested in: ' + plan
+    );
+    window.open('https://wa.me/919334239792?text=' + msg, '_blank');
+  });
+</script>
+</body>
+</html>

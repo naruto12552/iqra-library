@@ -1,0 +1,26 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/arbazalam/Documents/claude.learn/projects/iqra-library"
+publishOrigin = "default"
+base = "/Users/arbazalam/Documents/claude.learn/projects/iqra-library"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
