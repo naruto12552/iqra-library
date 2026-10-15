@@ -408,12 +408,13 @@
     .gal-hero {
       display:grid; grid-template-columns:5fr 3fr; gap:12px;
       border-radius:20px; overflow:hidden; margin-bottom:12px;
+      height:500px;
     }
-    .gal-main { position:relative; overflow:hidden; cursor:pointer; }
-    .gal-main img { width:100%; height:500px; object-fit:cover; display:block; transition:transform 0.5s; }
+    .gal-main { position:relative; overflow:hidden; cursor:pointer; height:100%; }
+    .gal-main img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
     .gal-main:hover img { transform:scale(1.04); }
-    .gal-side { display:flex; flex-direction:column; gap:12px; }
-    .gal-th   { position:relative; overflow:hidden; flex:1; min-height:120px; cursor:pointer; }
+    .gal-side { display:flex; flex-direction:column; gap:12px; height:100%; }
+    .gal-th   { position:relative; overflow:hidden; flex:1; cursor:pointer; min-height:0; }
     .gal-th img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
     .gal-th:hover img { transform:scale(1.06); }
     .gal-lbl {
@@ -720,10 +721,10 @@
       .nav-links, .nav-cta { display:none; }
       .hamburger { display:flex; }
       .section { padding:72px 0; }
-      .gal-hero { grid-template-columns:1fr; }
-      .gal-main img { height:280px; }
-      .gal-side { flex-direction:row; }
-      .gal-side .gal-th { min-height:150px; }
+      .gal-hero { grid-template-columns:1fr; height:auto; }
+      .gal-main { height:280px; }
+      .gal-side { flex-direction:row; height:160px; }
+      .gal-side .gal-th { min-height:0; }
       .gal-grid4 { grid-template-columns:repeat(2,1fr); }
       .mob-sticky { display:flex; }
       footer { padding-bottom:calc(32px + 64px + env(safe-area-inset-bottom)); }
@@ -829,6 +830,124 @@
     </div>
   </div>
 </section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery" class="section" style="background:#f7f7f5;padding-top:60px;padding-bottom:60px;">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <div class="tag">The Space</div>
+      <h2 class="sec-h2">Designed around <span class="accent">your focus</span></h2>
+      <p style="color:var(--muted);font-size:15px;max-width:480px;margin:12px auto 0;line-height:1.7;">
+        Real photos from inside Iqra Library — every corner built for deep, distraction-free study.
+      </p>
+      <span class="sec-line"></span>
+    </div>
+
+    <!-- Top hero row -->
+    <div class="gal-hero reveal d1">
+      <div class="gal-main" onclick="openLb(0)" role="button" tabindex="0" aria-label="View Students in Action">
+        <img src="images/students-full.jpg" alt="Students studying at Iqra Library"/>
+        <span class="gal-lbl">Students in Action</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-side">
+        <div class="gal-th" onclick="openLb(1)" role="button" tabindex="0" aria-label="View Director's Office">
+          <img src="images/owner-office.jpg" alt="Iqra Library Director's Office"/>
+          <span class="gal-lbl">Director's Office</span>
+          <span class="gal-zoom">🔍</span>
+        </div>
+        <div class="gal-th" onclick="openLb(2)" role="button" tabindex="0" aria-label="View Our Building">
+          <img src="images/building-drone.jpg" alt="Iqra Library Building — Aerial View"/>
+          <span class="gal-lbl">Our Building</span>
+          <span class="gal-zoom">🔍</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom 4-photo grid -->
+    <div class="gal-grid4 reveal d2">
+      <div class="gal-sq" onclick="openLb(3)" role="button" tabindex="0" aria-label="View Study Desks">
+        <img src="images/desks.jpg" alt="Study desks at Iqra Library" loading="lazy"/>
+        <span class="gal-lbl">Study Desks</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(4)" role="button" tabindex="0" aria-label="View Students Studying">
+        <img src="images/students-study.jpg" alt="Students deep in study at Iqra Library" loading="lazy"/>
+        <span class="gal-lbl">Deep Study</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(5)" role="button" tabindex="0" aria-label="View Office Entrance">
+        <img src="images/office-entrance.jpg" alt="Iqra Library Office Entrance" loading="lazy"/>
+        <span class="gal-lbl">Office Entrance</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(6)" role="button" tabindex="0" aria-label="View Launch Area">
+        <img src="images/launch-area.jpg" alt="Iqra Library Launch Area" loading="lazy"/>
+        <span class="gal-lbl">Launch Area</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLbOutside(event)">
+  <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
+  <button class="lb-arrow lb-prev" onclick="stepLb(-1)" aria-label="Previous">‹</button>
+  <div class="lb-box">
+    <img id="lb-img" src="" alt=""/>
+    <div class="lb-dots" id="lb-dots"></div>
+    <div class="lb-caption" id="lb-cap"></div>
+  </div>
+  <button class="lb-arrow lb-next" onclick="stepLb(1)" aria-label="Next">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+  const LB_PHOTOS = [
+    { src:"images/students-full.jpg",  cap:"Students in Action" },
+    { src:"images/owner-office.jpg",   cap:"Director's Office" },
+    { src:"images/building-drone.jpg", cap:"Our Building" },
+    { src:"images/desks.jpg",          cap:"Study Desks" },
+    { src:"images/students-study.jpg", cap:"Deep Study" },
+    { src:"images/office-entrance.jpg",cap:"Office Entrance" },
+    { src:"images/launch-area.jpg",    cap:"Launch Area" },
+  ];
+  let lbIdx = 0;
+  function openLb(i) {
+    lbIdx = i; renderLb();
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLbOutside(e) {
+    if (e.target === document.getElementById('lb')) closeLb();
+  }
+  function stepLb(dir) {
+    lbIdx = (lbIdx + dir + LB_PHOTOS.length) % LB_PHOTOS.length;
+    renderLb();
+  }
+  function renderLb() {
+    const p = LB_PHOTOS[lbIdx];
+    document.getElementById('lb-img').src = p.src;
+    document.getElementById('lb-img').alt = p.cap;
+    document.getElementById('lb-cap').textContent = p.cap;
+    document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + LB_PHOTOS.length;
+    const dots = document.getElementById('lb-dots');
+    dots.innerHTML = LB_PHOTOS.map((_,i) =>
+      `<span class="lb-dot${i===lbIdx?' active':''}"></span>`
+    ).join('');
+  }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lb').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') stepLb(1);
+    if (e.key === 'ArrowLeft')  stepLb(-1);
+    if (e.key === 'Escape')     closeLb();
+  });
+</script>
 
 <!-- ── FEATURES ── -->
 <section id="features" class="section">
@@ -1057,127 +1176,6 @@
     </div>
   </div>
 </section>
-
-<!-- ── GALLERY ── -->
-<section id="gallery" class="section" style="background:#f7f7f5">
-  <div class="container">
-    <div class="sec-header center reveal">
-      <div class="tag">The Space</div>
-      <h2 class="sec-h2">Designed around <span class="accent">your focus</span></h2>
-      <p style="color:var(--muted);font-size:15px;max-width:480px;margin:12px auto 0;line-height:1.7;">
-        Real photos from inside Iqra Library — every corner built for deep, distraction-free study.
-      </p>
-      <span class="sec-line"></span>
-    </div>
-
-    <!-- Top hero row -->
-    <div class="gal-hero reveal d1">
-      <div class="gal-main" onclick="openLb(0)" role="button" tabindex="0" aria-label="View Students in Action">
-        <img src="images/students-full.jpg" alt="Students studying at Iqra Library" loading="lazy"/>
-        <span class="gal-lbl">Students in Action</span>
-        <span class="gal-zoom">🔍</span>
-      </div>
-      <div class="gal-side">
-        <div class="gal-th" onclick="openLb(1)" role="button" tabindex="0" aria-label="View Director's Office">
-          <img src="images/owner-office.jpg" alt="Iqra Library Director's Office" loading="lazy"/>
-          <span class="gal-lbl">Director's Office</span>
-          <span class="gal-zoom">🔍</span>
-        </div>
-        <div class="gal-th" onclick="openLb(2)" role="button" tabindex="0" aria-label="View Our Building">
-          <img src="images/building-drone.jpg" alt="Iqra Library Building — Aerial View" loading="lazy"/>
-          <span class="gal-lbl">Our Building</span>
-          <span class="gal-zoom">🔍</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom 4-photo grid -->
-    <div class="gal-grid4 reveal d2">
-      <div class="gal-sq" onclick="openLb(3)" role="button" tabindex="0" aria-label="View Study Desks">
-        <img src="images/desks.jpg" alt="Study desks at Iqra Library" loading="lazy"/>
-        <span class="gal-lbl">Study Desks</span>
-        <span class="gal-zoom">🔍</span>
-      </div>
-      <div class="gal-sq" onclick="openLb(4)" role="button" tabindex="0" aria-label="View Students Studying">
-        <img src="images/students-study.jpg" alt="Students deep in study at Iqra Library" loading="lazy"/>
-        <span class="gal-lbl">Deep Study</span>
-        <span class="gal-zoom">🔍</span>
-      </div>
-      <div class="gal-sq" onclick="openLb(5)" role="button" tabindex="0" aria-label="View Office Entrance">
-        <img src="images/office-entrance.jpg" alt="Iqra Library Office Entrance" loading="lazy"/>
-        <span class="gal-lbl">Office Entrance</span>
-        <span class="gal-zoom">🔍</span>
-      </div>
-      <div class="gal-sq" onclick="openLb(6)" role="button" tabindex="0" aria-label="View Launch Area">
-        <img src="images/launch-area.jpg" alt="Iqra Library Launch Area" loading="lazy"/>
-        <span class="gal-lbl">Launch Area</span>
-        <span class="gal-zoom">🔍</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── LIGHTBOX ── -->
-<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLbOutside(event)">
-  <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
-  <button class="lb-arrow lb-prev" onclick="stepLb(-1)" aria-label="Previous">‹</button>
-  <div class="lb-box">
-    <img id="lb-img" src="" alt=""/>
-    <div class="lb-dots" id="lb-dots"></div>
-    <div class="lb-caption" id="lb-cap"></div>
-  </div>
-  <button class="lb-arrow lb-next" onclick="stepLb(1)" aria-label="Next">›</button>
-  <div class="lb-counter" id="lb-counter"></div>
-</div>
-
-<script>
-  const LB_PHOTOS = [
-    { src:"images/students-full.jpg",  cap:"Students in Action" },
-    { src:"images/owner-office.jpg",   cap:"Director's Office" },
-    { src:"images/building-drone.jpg", cap:"Our Building" },
-    { src:"images/desks.jpg",          cap:"Study Desks" },
-    { src:"images/students-study.jpg", cap:"Deep Study" },
-    { src:"images/office-entrance.jpg",cap:"Office Entrance" },
-    { src:"images/launch-area.jpg",    cap:"Launch Area" },
-  ];
-  let lbIdx = 0;
-
-  function openLb(i) {
-    lbIdx = i;
-    renderLb();
-    document.getElementById('lb').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLb() {
-    document.getElementById('lb').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeLbOutside(e) {
-    if (e.target === document.getElementById('lb')) closeLb();
-  }
-  function stepLb(dir) {
-    lbIdx = (lbIdx + dir + LB_PHOTOS.length) % LB_PHOTOS.length;
-    renderLb();
-  }
-  function renderLb() {
-    const p = LB_PHOTOS[lbIdx];
-    document.getElementById('lb-img').src = p.src;
-    document.getElementById('lb-img').alt = p.cap;
-    document.getElementById('lb-cap').textContent = p.cap;
-    document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + LB_PHOTOS.length;
-    const dots = document.getElementById('lb-dots');
-    dots.innerHTML = LB_PHOTOS.map((_,i) =>
-      `<span class="lb-dot${i===lbIdx?' active':''}"></span>`
-    ).join('');
-  }
-  // keyboard navigation
-  document.addEventListener('keydown', e => {
-    if (!document.getElementById('lb').classList.contains('open')) return;
-    if (e.key === 'ArrowRight') stepLb(1);
-    if (e.key === 'ArrowLeft')  stepLb(-1);
-    if (e.key === 'Escape')     closeLb();
-  });
-</script>
 
 <!-- ── STUDENT REVIEWS (no fake reviews) ── -->
 <section id="reviews" class="section" style="background:var(--off)">
