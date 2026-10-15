@@ -47,8 +47,8 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "27.1089425",
-      "longitude": "84.4732441"
+      "latitude": "27.1089664",
+      "longitude": "84.475904"
     },
     "sameAs": []
   }
@@ -72,13 +72,14 @@
       --muted:  #888888;
       --radius: 20px;
     }
-    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:hidden; }
     body {
       font-family:'Inter', system-ui, sans-serif;
       background:var(--white);
       color:#111;
       -webkit-tap-highlight-color:transparent;
       overflow-x:hidden;
+      width:100%;
     }
     .container { max-width:1120px; margin:0 auto; padding:0 24px; }
     img { display:block; max-width:100%; }
@@ -403,38 +404,102 @@
     .step-body p  { font-size:14px; color:rgba(255,255,255,.45); line-height:1.65; }
 
     /* ─────────────── GALLERY ─────────────── */
-    #gallery { background:#fff; }
-    .gallery-wrap {
-      display:grid; grid-template-columns:5fr 3fr; gap:16px;
-      border-radius:24px; overflow:hidden;
+    #gallery { background:#f7f7f5; }
+    .gal-hero {
+      display:grid; grid-template-columns:5fr 3fr; gap:12px;
+      border-radius:20px; overflow:hidden; margin-bottom:12px;
     }
-    .gal-main { position:relative; overflow:hidden; }
-    .gal-main img { width:100%; height:520px; object-fit:cover; transition:transform 0.6s; }
-    .gal-main:hover img { transform:scale(1.03); }
-    .gal-side { display:flex; flex-direction:column; gap:16px; }
-    .gal-th   { position:relative; overflow:hidden; flex:1; min-height:140px; }
-    .gal-th img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
-    .gal-th:hover img { transform:scale(1.05); }
+    .gal-main { position:relative; overflow:hidden; cursor:pointer; }
+    .gal-main img { width:100%; height:500px; object-fit:cover; display:block; transition:transform 0.5s; }
+    .gal-main:hover img { transform:scale(1.04); }
+    .gal-side { display:flex; flex-direction:column; gap:12px; }
+    .gal-th   { position:relative; overflow:hidden; flex:1; min-height:120px; cursor:pointer; }
+    .gal-th img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+    .gal-th:hover img { transform:scale(1.06); }
     .gal-lbl {
-      position:absolute; bottom:12px; left:12px;
-      background:rgba(10,10,10,.75); backdrop-filter:blur(8px);
+      position:absolute; bottom:10px; left:10px;
+      background:rgba(0,0,0,.65); backdrop-filter:blur(8px);
       color:#fff; font-size:11px; font-weight:600;
-      padding:5px 12px; border-radius:100px; letter-spacing:.5px;
+      padding:4px 11px; border-radius:100px; letter-spacing:.4px;
+      pointer-events:none;
     }
-    .gal-ph {
-      width:100%; height:100%;
-      background:linear-gradient(135deg, #1a3a2e, #2d5a45);
-      display:flex; flex-direction:column; align-items:center;
-      justify-content:center; color:rgba(255,255,255,.35); gap:8px;
-      font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:20px;
-      text-align:center; min-height:140px;
+    /* hover overlay */
+    .gal-main::after, .gal-th::after, .gal-sq::after {
+      content:''; position:absolute; inset:0;
+      background:rgba(0,0,0,0); transition:background .3s;
     }
-    .gal-add-note {
-      margin-top:20px; text-align:center;
-      font-size:13px; color:var(--muted);
-      background:var(--off); border:1px dashed var(--off2);
-      border-radius:12px; padding:14px 20px;
+    .gal-main:hover::after, .gal-th:hover::after, .gal-sq:hover::after {
+      background:rgba(0,0,0,.12);
     }
+    /* zoom icon */
+    .gal-zoom {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0);
+      width:44px; height:44px; background:rgba(255,255,255,.9);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:18px; transition:transform .3s; z-index:2; pointer-events:none;
+    }
+    .gal-main:hover .gal-zoom,
+    .gal-th:hover .gal-zoom,
+    .gal-sq:hover .gal-zoom { transform:translate(-50%,-50%) scale(1); }
+
+    /* bottom 4-grid */
+    .gal-grid4 {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+    }
+    .gal-sq { position:relative; overflow:hidden; border-radius:16px; aspect-ratio:4/3; cursor:pointer; }
+    .gal-sq img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+    .gal-sq:hover img { transform:scale(1.07); }
+
+    /* ── LIGHTBOX ── */
+    .lb-overlay {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,.95); backdrop-filter:blur(6px);
+      align-items:center; justify-content:center; padding:20px;
+    }
+    .lb-overlay.open { display:flex; }
+    .lb-box { position:relative; max-width:90vw; max-height:90vh; }
+    .lb-box img {
+      max-width:90vw; max-height:85vh;
+      object-fit:contain; border-radius:12px;
+      box-shadow:0 24px 80px rgba(0,0,0,.6);
+      display:block;
+    }
+    .lb-caption {
+      text-align:center; color:rgba(255,255,255,.7);
+      font-size:13px; margin-top:12px; letter-spacing:.4px;
+    }
+    .lb-close {
+      position:fixed; top:20px; right:24px;
+      background:rgba(255,255,255,.12); border:none;
+      color:#fff; font-size:22px; width:44px; height:44px;
+      border-radius:50%; cursor:pointer; display:flex;
+      align-items:center; justify-content:center;
+      transition:background .2s; backdrop-filter:blur(4px);
+    }
+    .lb-close:hover { background:rgba(255,255,255,.22); }
+    .lb-arrow {
+      position:fixed; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.1); border:none;
+      color:#fff; font-size:22px; width:48px; height:48px;
+      border-radius:50%; cursor:pointer; display:flex;
+      align-items:center; justify-content:center;
+      transition:background .2s; backdrop-filter:blur(4px);
+    }
+    .lb-arrow:hover { background:rgba(255,255,255,.22); }
+    .lb-prev { left:16px; }
+    .lb-next { right:16px; }
+    .lb-counter {
+      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      color:rgba(255,255,255,.5); font-size:12px; letter-spacing:1px;
+    }
+    .lb-dots {
+      display:flex; gap:6px; justify-content:center; margin-top:14px;
+    }
+    .lb-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:rgba(255,255,255,.3); transition:background .2s;
+    }
+    .lb-dot.active { background:#fff; }
 
     /* ─────────────── REVIEWS ─────────────── */
     #reviews { background:var(--off); }
@@ -655,13 +720,17 @@
       .nav-links, .nav-cta { display:none; }
       .hamburger { display:flex; }
       .section { padding:72px 0; }
-      .gallery-wrap { grid-template-columns:1fr; }
-      .gal-main img { height:260px; }
+      .gal-hero { grid-template-columns:1fr; }
+      .gal-main img { height:280px; }
       .gal-side { flex-direction:row; }
+      .gal-side .gal-th { min-height:150px; }
+      .gal-grid4 { grid-template-columns:repeat(2,1fr); }
       .mob-sticky { display:flex; }
       footer { padding-bottom:calc(32px + 64px + env(safe-area-inset-bottom)); }
       .footer-in { grid-template-columns:1fr; text-align:center; }
       .footer-right { text-align:center; }
+      .amenities-grid { grid-template-columns:1fr; }
+      .lb-arrow { display:none; }
     }
     @media (max-width:540px) {
       .features-grid { grid-template-columns:1fr; }
@@ -669,6 +738,7 @@
       .hero-actions { flex-direction:column; align-items:center; }
       .btn-gold, .btn-ghost { width:100%; max-width:280px; justify-content:center; }
       .gal-side { flex-direction:column; }
+      .gal-grid4 { grid-template-columns:1fr 1fr; gap:8px; }
       .reviews-card { flex-direction:column; }
     }
   </style>
@@ -989,41 +1059,125 @@
 </section>
 
 <!-- ── GALLERY ── -->
-<section id="gallery" class="section" style="background:#fff">
+<section id="gallery" class="section" style="background:#f7f7f5">
   <div class="container">
     <div class="sec-header center reveal">
       <div class="tag">The Space</div>
       <h2 class="sec-h2">Designed around <span class="accent">your focus</span></h2>
+      <p style="color:var(--muted);font-size:15px;max-width:480px;margin:12px auto 0;line-height:1.7;">
+        Real photos from inside Iqra Library — every corner built for deep, distraction-free study.
+      </p>
       <span class="sec-line"></span>
     </div>
-    <div class="gallery-wrap reveal d1">
-      <div class="gal-main">
-        <img src="images/desks.jpg" alt="Study desks at Iqra Library — rows of individual workstations" loading="lazy"/>
-        <span class="gal-lbl">Study Desks</span>
+
+    <!-- Top hero row -->
+    <div class="gal-hero reveal d1">
+      <div class="gal-main" onclick="openLb(0)" role="button" tabindex="0" aria-label="View Students in Action">
+        <img src="images/students-full.jpg" alt="Students studying at Iqra Library" loading="lazy"/>
+        <span class="gal-lbl">Students in Action</span>
+        <span class="gal-zoom">🔍</span>
       </div>
       <div class="gal-side">
-        <div class="gal-th">
-          <img src="images/chairs.jpg" alt="Comfortable chairs at Iqra Library" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-ph" style="display:none">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M8 21v-4M16 21v-4"/></svg>
-            <p>Chairs photo</p>
-          </div>
-          <span class="gal-lbl">Ergonomic Chairs</span>
+        <div class="gal-th" onclick="openLb(1)" role="button" tabindex="0" aria-label="View Director's Office">
+          <img src="images/owner-office.jpg" alt="Iqra Library Director's Office" loading="lazy"/>
+          <span class="gal-lbl">Director's Office</span>
+          <span class="gal-zoom">🔍</span>
         </div>
-        <div class="gal-th">
-          <div class="gal-ph">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            <p>Add more photos<br/>of the space</p>
-          </div>
+        <div class="gal-th" onclick="openLb(2)" role="button" tabindex="0" aria-label="View Our Building">
+          <img src="images/building-drone.jpg" alt="Iqra Library Building — Aerial View" loading="lazy"/>
+          <span class="gal-lbl">Our Building</span>
+          <span class="gal-zoom">🔍</span>
         </div>
       </div>
     </div>
-    <p class="gal-add-note reveal d2">
-      📷 <strong>More photos coming soon</strong> — entrance, girls' cabin, lockers, night view. Send photos to your developer to update this section.
-    </p>
+
+    <!-- Bottom 4-photo grid -->
+    <div class="gal-grid4 reveal d2">
+      <div class="gal-sq" onclick="openLb(3)" role="button" tabindex="0" aria-label="View Study Desks">
+        <img src="images/desks.jpg" alt="Study desks at Iqra Library" loading="lazy"/>
+        <span class="gal-lbl">Study Desks</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(4)" role="button" tabindex="0" aria-label="View Students Studying">
+        <img src="images/students-study.jpg" alt="Students deep in study at Iqra Library" loading="lazy"/>
+        <span class="gal-lbl">Deep Study</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(5)" role="button" tabindex="0" aria-label="View Office Entrance">
+        <img src="images/office-entrance.jpg" alt="Iqra Library Office Entrance" loading="lazy"/>
+        <span class="gal-lbl">Office Entrance</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+      <div class="gal-sq" onclick="openLb(6)" role="button" tabindex="0" aria-label="View Launch Area">
+        <img src="images/launch-area.jpg" alt="Iqra Library Launch Area" loading="lazy"/>
+        <span class="gal-lbl">Launch Area</span>
+        <span class="gal-zoom">🔍</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLbOutside(event)">
+  <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
+  <button class="lb-arrow lb-prev" onclick="stepLb(-1)" aria-label="Previous">‹</button>
+  <div class="lb-box">
+    <img id="lb-img" src="" alt=""/>
+    <div class="lb-dots" id="lb-dots"></div>
+    <div class="lb-caption" id="lb-cap"></div>
+  </div>
+  <button class="lb-arrow lb-next" onclick="stepLb(1)" aria-label="Next">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+  const LB_PHOTOS = [
+    { src:"images/students-full.jpg",  cap:"Students in Action" },
+    { src:"images/owner-office.jpg",   cap:"Director's Office" },
+    { src:"images/building-drone.jpg", cap:"Our Building" },
+    { src:"images/desks.jpg",          cap:"Study Desks" },
+    { src:"images/students-study.jpg", cap:"Deep Study" },
+    { src:"images/office-entrance.jpg",cap:"Office Entrance" },
+    { src:"images/launch-area.jpg",    cap:"Launch Area" },
+  ];
+  let lbIdx = 0;
+
+  function openLb(i) {
+    lbIdx = i;
+    renderLb();
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLbOutside(e) {
+    if (e.target === document.getElementById('lb')) closeLb();
+  }
+  function stepLb(dir) {
+    lbIdx = (lbIdx + dir + LB_PHOTOS.length) % LB_PHOTOS.length;
+    renderLb();
+  }
+  function renderLb() {
+    const p = LB_PHOTOS[lbIdx];
+    document.getElementById('lb-img').src = p.src;
+    document.getElementById('lb-img').alt = p.cap;
+    document.getElementById('lb-cap').textContent = p.cap;
+    document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + LB_PHOTOS.length;
+    const dots = document.getElementById('lb-dots');
+    dots.innerHTML = LB_PHOTOS.map((_,i) =>
+      `<span class="lb-dot${i===lbIdx?' active':''}"></span>`
+    ).join('');
+  }
+  // keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lb').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') stepLb(1);
+    if (e.key === 'ArrowLeft')  stepLb(-1);
+    if (e.key === 'Escape')     closeLb();
+  });
+</script>
 
 <!-- ── STUDENT REVIEWS (no fake reviews) ── -->
 <section id="reviews" class="section" style="background:var(--off)">
@@ -1094,11 +1248,11 @@
           <div class="inq-group">
             <label for="inq-plan">Interested In</label>
             <select id="inq-plan">
-              <option value="Morning Shift (5AM–11AM) – ₹400/month">🌅 Morning Shift (5AM–11AM) – ₹400/month</option>
-              <option value="Noon Shift (11AM–5PM) – ₹400/month">☀️ Noon Shift (11AM–5PM) – ₹400/month</option>
-              <option value="Night Shift (5PM–10PM) – ₹400/month">🌙 Night Shift (5PM–10PM) – ₹400/month</option>
-              <option value="Double Shift (any 2) – ₹800/month" selected>⚡ Double Shift (any 2) – ₹800/month</option>
-              <option value="Full Time (5AM–10PM) – ₹1000/month">🏆 Full Time (5AM–10PM) – ₹1000/month</option>
+              <option value="Morning Shift (5AM–11AM) – ₹500/month">🌅 Morning Shift (5AM–11AM) – ₹500/month</option>
+              <option value="Noon Shift (11AM–5PM) – ₹500/month">☀️ Noon Shift (11AM–5PM) – ₹500/month</option>
+              <option value="Night Shift (5PM–10PM) – ₹500/month">🌙 Night Shift (5PM–10PM) – ₹500/month</option>
+              <option value="Double Shift (any 2) – ₹900/month" selected>⚡ Double Shift (any 2) – ₹900/month</option>
+              <option value="Full Time (5AM–10PM) – ₹1200/month">🏆 Full Time (5AM–10PM) – ₹1200/month</option>
               <option value="Just want to visit first">Just want to visit first</option>
             </select>
           </div>
@@ -1131,7 +1285,7 @@
           🌅 Morning Shift
         </div>
         <div class="price-tier" style="color:#92400e;">5:00 AM — 11:00 AM</div>
-        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-amount"><sup>₹</sup>500</div>
         <div class="price-period">per month · 6 hrs daily</div>
         <hr class="price-divider"/>
         <ul class="price-features">
@@ -1150,7 +1304,7 @@
           ☀️ Noon Shift
         </div>
         <div class="price-tier" style="color:#065f46;">11:00 AM — 5:00 PM</div>
-        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-amount"><sup>₹</sup>500</div>
         <div class="price-period">per month · 6 hrs daily</div>
         <hr class="price-divider"/>
         <ul class="price-features">
@@ -1169,7 +1323,7 @@
           🌙 Night Shift
         </div>
         <div class="price-tier" style="color:#4c1d95;">5:00 PM — 10:00 PM</div>
-        <div class="price-amount"><sup>₹</sup>400</div>
+        <div class="price-amount"><sup>₹</sup>500</div>
         <div class="price-period">per month · 5 hrs daily</div>
         <hr class="price-divider"/>
         <ul class="price-features">
@@ -1192,8 +1346,8 @@
           ⚡ Double Shift
         </div>
         <div class="price-tier" style="color:rgba(255,255,255,0.45);">Any 2 Shifts · 11–12 hrs</div>
-        <div class="price-amount" style="color:#fff;"><sup style="color:var(--gold2)">₹</sup>800</div>
-        <div class="price-period" style="color:rgba(255,255,255,0.4);">per month · save ₹0 vs 2 singles</div>
+        <div class="price-amount" style="color:#fff;"><sup style="color:var(--gold2)">₹</sup>900</div>
+        <div class="price-period" style="color:rgba(255,255,255,0.4);">per month · save ₹100 vs 2 singles</div>
         <hr class="price-divider" style="border-color:rgba(255,255,255,0.08);"/>
         <ul class="price-features">
           <li style="color:rgba(255,255,255,0.7);">Morning + Noon <em style="color:rgba(255,255,255,0.4);font-size:12px;">(5AM–5PM)</em></li>
@@ -1212,7 +1366,7 @@
           🏆 Full Time
         </div>
         <div class="price-tier">All 3 Shifts · 5AM – 10PM</div>
-        <div class="price-amount"><sup>₹</sup>1000</div>
+        <div class="price-amount"><sup>₹</sup>1200</div>
         <div class="price-period">per month · 17 hrs daily access</div>
         <hr class="price-divider"/>
         <ul class="price-features">
@@ -1264,13 +1418,13 @@
           <a href="tel:+919631095377" class="loc-btn lb-green">📞 +91 96310 95377</a>
           <a href="tel:+919798712852" class="loc-btn lb-green">📞 +91 97987 12852</a>
           <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Iqra%20Library" class="loc-btn lb-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
-          <a href="https://maps.google.com/?q=Krishi+Road+Nandpur+Dala+Narkatiaganj+West+Champaran+Bihar+845455" class="loc-btn lb-dir" target="_blank" rel="noopener">📍 Get Directions</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=27.1089664,84.475904" class="loc-btn lb-dir" target="_blank" rel="noopener">📍 Get Directions</a>
         </div>
       </div>
       <div>
         <div class="map-wrap reveal d2">
           <iframe
-            src="https://maps.google.com/maps?q=27.1089425,84.4732441&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=27.1089664,84.475904&t=&z=17&ie=UTF8&iwloc=&output=embed"
             allowfullscreen loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Iqra Library exact location on Google Maps">
@@ -1290,7 +1444,7 @@
   <div class="cta-actions reveal d3">
     <a href="tel:+919334239792" class="ca-call">📞 Call to Book</a>
     <a href="https://wa.me/919334239792?text=Hi%2C%20I%20want%20to%20book%20a%20seat%20at%20Iqra%20Library" class="ca-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a href="https://maps.google.com/?q=Krishi+Road+Nandpur+Dala+Narkatiaganj+West+Champaran+Bihar" class="ca-dir" target="_blank" rel="noopener">📍 Get Directions</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=27.1089664,84.475904" class="ca-dir" target="_blank" rel="noopener">📍 Get Directions</a>
   </div>
 </section>
 
